@@ -40,7 +40,7 @@ pipeline {
 
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t $DOCKER_IMAGE:latest .'
+                sh 'docker build -t $DOCKER_IMAGE:v1 .'
             }
         }
 
@@ -55,7 +55,7 @@ pipeline {
 
                     sh '''
                     echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
-                    docker push $DOCKER_IMAGE:latest
+                    docker push $DOCKER_IMAGE:v1
                     '''
 
                 }
