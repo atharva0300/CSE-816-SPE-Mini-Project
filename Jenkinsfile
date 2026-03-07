@@ -61,15 +61,15 @@ pipeline {
     post {
 
         success {
-            mail to: 'learning.atharva0300@email.com',
-                 subject: 'Jenkins Build SUCCESS',
-                 body: 'Scientific Calculator pipeline executed successfully.'
+            mail to: 'learning.atharva0300@gmail.com',
+                 subject: "SUCCESS: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "Build succeeded.\nCheck details: ${env.BUILD_URL}"
         }
 
         failure {
-            mail to: 'atharva0300@email.com, learning.atharva0300@gmail.com',
-                 subject: 'Jenkins Build FAILED',
-                 body: 'Pipeline execution failed. Check Jenkins logs.'
+            mail to: 'learning.atharva0300@gmail.com, atharva0300@gmail.com',
+                 subject: "FAILED: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                 body: "Build failed.\nCheck details: ${env.BUILD_URL}"
         }
 
     }
