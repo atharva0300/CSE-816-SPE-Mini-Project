@@ -3,17 +3,31 @@ import java.util.Scanner;
 public class Main {
 
     public static double sqrt(double x){
+        if(x < 0){
+            System.out.println("Error: Square root not defined for negative numbers.");
+            return Double.NaN;
+        }
         return Math.sqrt(x);
     }
 
     public static long factorial(int x){
+        if(x < 0){
+            System.out.println("Error: Factorial not defined for negative numbers.");
+            return -1;
+        }
+
         long result = 1;
-        for(int i=1;i<=x;i++)
+        for(int i = 1; i <= x; i++){
             result *= i;
+        }
         return result;
     }
 
     public static double ln(double x){
+        if(x <= 0){
+            System.out.println("Error: Natural log defined only for positive numbers.");
+            return Double.NaN;
+        }
         return Math.log(x);
     }
 
@@ -47,13 +61,17 @@ public class Main {
                 case 2:
                     System.out.print("Enter number: ");
                     int f = sc.nextInt();
-                    System.out.println("Result = " + factorial(f));
+                    long fact = factorial(f);
+                    if(fact != -1)
+                        System.out.println("Result = " + fact);
                     break;
 
                 case 3:
                     System.out.print("Enter number: ");
-                    double ln = sc.nextDouble();
-                    System.out.println("Result = " + ln(ln));
+                    double lnInput = sc.nextDouble();
+                    double lnResult = ln(lnInput);
+                    if(!Double.isNaN(lnResult))
+                        System.out.println("Result = " + lnResult);
                     break;
 
                 case 4:
