@@ -1,0 +1,15 @@
+---
+- hosts: servers
+  become: false
+
+  tasks:
+
+    - name: Pull calculator image
+      shell: docker pull atharva0300/scientific-calculator:v1
+
+    - name: Stop old container
+      shell: docker rm -f scientific-calculator
+      ignore_errors: yes
+
+    - name: Run calculator container
+      shell: docker run -dit --name scientific-calculator atharva0300/scientific-calculator:v1
