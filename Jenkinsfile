@@ -50,10 +50,17 @@ pipeline {
             }
         }
 
-        stage('Deploy with Ansible'){
-            steps{
-                sh 'cd project'
-                sh 'ansible-playbook -i inventory.ini deploy.yml'
+        stage('Deploy with Ansible') {
+            steps {
+                sh '''
+                docker exec ansible-control ansible-playbook -i /project/inventory.ini /project/deploy.yml
+                '''
+            }
+        }
+
+        stage('Run Scientific Calculator') {
+            steps {
+                sh 'docker exec scientific-calculator java -jar /app/calculator.jar &'
             }
         }
 
