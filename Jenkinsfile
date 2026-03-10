@@ -52,12 +52,10 @@ pipeline {
 
         stage('Deploy with Ansible'){
             steps{
-            script{
                 sh 'cd project'
                 sh 'ansible-playbook -i inventory.ini deploy.yml'
             }
         }
-    }
 
 
     post {
