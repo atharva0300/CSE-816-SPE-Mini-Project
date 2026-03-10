@@ -63,7 +63,7 @@ pipeline {
                 sh 'docker exec scientific-calculator java -jar /app/calculator.jar &'
             }
         }
-
+    }
 
     post {
         success {
