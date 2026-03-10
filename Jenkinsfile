@@ -53,7 +53,7 @@ pipeline {
         stage('Deploy with Ansible') {
             steps {
                 sh '''
-                docker exec ansible-control ansible-playbook -i /project/inventory.ini /project/deploy.yml
+                docker exec ansible-control ansible-playbook -i project/inventory.ini project/deploy.yml
                 '''
             }
         }
