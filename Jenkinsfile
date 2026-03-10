@@ -49,7 +49,17 @@ pipeline {
                 }
             }
         }
+
+        stage('Deploy with Ansible'){
+            steps{
+            script{
+                sh 'cd project'
+                sh 'ansible-playbook -i inventory.ini deploy.yml'
+            }
+        }
     }
+
+    
     post {
         success {
             mail to: 'learning.atharva0300@gmail.com',
