@@ -8,13 +8,13 @@ pipeline {
         DOCKER_IMAGE = "atharva0300/scientific-calculator"
     }
     stages {
-        /*
+        
         stage('Force Failure') {
             steps {
                 sh 'exit 1'
             }
         }
-        */
+
         stage('Build') {
             steps {
                 sh 'mvn clean compile'
